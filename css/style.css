@@ -1,38 +1,56 @@
 /*imports css*/
-@import url(index.css);
-@import url('https://fonts.googleapis.com');
+@import url('index.css');
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap');
 /*imports css final*/
+
 /*cores*/
 :root {
-  /* Cores de Fundo */
-  --bg-dark: #0A0A0A;       /* Fundo principal profundo */
-  --bg-card: #161616;       /* Fundo de cards ou seções */
+  /* Cores de Fundo (Tema Escuro - Padrão) */
+  --bg-dark: #0A0A0A;       
+  --bg-card: #161616;       
+  --header-bg: rgba(10, 10, 10, 0.9);
+  --border-color: #333333;
 
   /* Cores de Destaque */
-  --purple-main: #8257E5;   /* Roxo padrão (estilo Rocketseat) */
-  --blue-cyan: #22D3EE;     /* Ciano para contraste */
+  --purple-main: #8257E5;   
+  --blue-cyan: #22D3EE;     
   
   /* Cores de Texto */
-  --text-primary: #FFFFFF;  /* Branco puro para títulos */
-  --text-secondary: #A8A8B3; /* Cinza claro para textos e parágrafos */
+  --text-primary: #FFFFFF;  
+  --text-secondary: #A8A8B3; 
 
   /* Gradiente */
   --gradient-linear: linear-gradient(90deg, #8257E5 0%, #22D3EE 100%);
 }
+
+/* Tema Claro */
+[data-theme="light"] {
+  --bg-dark: #F0F0F5;       
+  --bg-card: #FFFFFF;       
+  --header-bg: rgba(255, 255, 255, 0.9);
+  --border-color: #DCDCE6;
+  
+  --text-primary: #121214;  
+  --text-secondary: #737380; 
+}
 /*cores final*/
+
 /*corpo-site*/
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     background-color: var(--bg-dark);
     color: var(--text-primary);
     font-family: 'Sora', sans-serif;
     scroll-behavior: smooth; 
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 /*corpo-site final*/
+
 /*menu-topo*/
 header {
     padding: 1.5rem 10%;
@@ -40,16 +58,21 @@ header {
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid var(--border-color);
-    background: rgba(10, 10, 10, 0.9);
+    background: var(--header-bg);
     backdrop-filter: blur(10px);
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
+    transition: all 0.3s ease;
 }
-#btm-mobile { 
-    display: none; 
+
+/* Classe ativada pelo JS ao rolar a página */
+header.scrolled {
+    padding: 0.8rem 10%; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
+
 .logo {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -60,28 +83,127 @@ header {
     align-items: center;
     cursor: pointer;
 }
+
 .logo img {
     grid-area: imagem;
     height: 50px; 
     width: auto;
 }
+
 .logo h2 {
     grid-area: titulo;
     margin: 0;
     align-self: end;
-    
     font-size: 1.5rem;
     background: var(--gradient-linear);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
 .logo span {
     grid-area: subtitulo;
     align-self: start;
     font-size: 0.9rem;
     color: var(--text-secondary);
 }
+
+/* Utilitários do Menu (Botões de Tema/Idioma) */
+.header-utils {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#theme-toggle, .btn-mobile {
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#theme-toggle:hover, .btn-mobile:hover {
+    color: var(--blue-cyan);
+}
+
+/* ==========================================
+   Estilos do Dropdown de Idiomas (Inspirado em image_1.png)
+   ========================================== */
+.lang-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+#lang-menu-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#lang-menu-btn:hover {
+    border-color: var(--blue-cyan);
+}
+
+/* O menu flutuante escondido */
+.lang-options {
+    display: none; 
+    position: absolute;
+    top: 130%; 
+    right: 0;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    list-style: none;
+    padding: 0.5rem;
+    width: 160px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* Classe que o JavaScript vai adicionar para mostrar o menu */
+.lang-options.show {
+    display: flex; 
+}
+
+/* Estilo de cada item da lista */
+.lang-options li {
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+}
+
+.lang-options li:hover {
+    border-color: var(--border-color);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* O item que está selecionado no momento (cor da referência) */
+.lang-options li.active {
+    background-color: #6C829D; 
+    color: #FFFFFF;
+}
+
+[data-theme="light"] .lang-options li.active {
+    background-color: #4A6382; 
+}
+
 nav ul {
     display: flex;
     list-style: none;
@@ -91,13 +213,28 @@ nav ul {
 nav ul li a {
     text-decoration: none;
     color: var(--text-secondary);
+    font-weight: 600;
     transition: 0.3s;
 }
 
 nav ul li a:hover {
     color: var(--blue-cyan);
 }
+
+#btn-mobile { 
+    display: none; 
+}
+
+@media (max-width: 850px) {
+    #btn-mobile {
+        display: block;
+    }
+    nav {
+        display: none; 
+    }
+}
 /*menu-topo final*/
+
 /*footer*/
 footer {
     padding: 3rem 10%;       
@@ -111,6 +248,7 @@ footer p {
     font-size: 0.9rem;          
     font-family: 'Sora', sans-serif;
 }
+
 footer a {
     color: var(--blue-cyan);
     text-decoration: none;

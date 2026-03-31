@@ -1,20 +1,55 @@
-// Seleciona os elementos
-const btnMobile = document.getElementById('btn-mobile');
+// Seleciona os elementos gerais
 const header = document.getElementById('header');
+const btnMobile = document.getElementById('btn-mobile');
+const themeToggle = document.getElementById('theme-toggle');
+
+// ==========================================
+// 1. Efeito de diminuir o Header ao rolar
+// ==========================================
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
+
+// ==========================================
+// 2. Lógica do Tema Claro e Escuro
+// ==========================================
+if (localStorage.getItem('theme') === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
+    themeToggle.textContent = '☀️';
+} else {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    themeToggle.textContent = '🌙';
+}
+
+themeToggle.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    
+    if (currentTheme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeToggle.textContent = '🌙';
+        localStorage.setItem('theme', 'dark');
+    } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        themeToggle.textContent = '☀️';
+        localStorage.setItem('theme', 'light');
+    }
+});
+
+
+// ==========================================
+// 4. Menu Mobile
+// ==========================================
 function toggleMenu() {
     const nav = document.getElementById('nav');
     nav.classList.toggle('active');
 }
 
-// Efeito de mudar fundo do Header ao rolar
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        header.style.backgroundColor = '#000000';
-        header.style.padding = '1rem 10%';
-    } else {
-        header.style.backgroundColor = 'rgba(10, 10, 10, 0.9)';
-        header.style.padding = '1.5rem 10%';
-    }
-});
+if(btnMobile) {
+    btnMobile.addEventListener('click', toggleMenu);
+}
 
-console.log("Script carregado! A paleta de cores está ativa.");
+console.log("Script carregado! Dropdown de idiomas e tema ativos.");

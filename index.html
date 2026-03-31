@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,50 +7,74 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header id="menu-top-header">
+    <header id="header">
         <div class="logo">
             <img src="assents/Logo.svg" alt="DevFullStack">
             <h2>Alexandre Xavier</h2>
-            <span>Criando Experiências Digitais</span>
+            <span data-i18n="subtitle">Criando Experiências Digitais</span>
         </div>
-        <button class="btm-mobile" id="btm-mobile">Menu</button>
-        <nav class="menu-top-nav">
+        
+        <nav class="menu-top-nav" id="nav">
             <ul class="menu-top-ul">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Sobre</a></li>
-                <li><a href="#">Skills</a></li>
-                <li><a href="#">Projetos</a></li>
-                <li><a href="#">Contato</a></li>
+                <li><a href="#" data-i18n="home">Home</a></li>
+                <li><a href="#" data-i18n="about">Sobre</a></li>
+                <li><a href="#" data-i18n="skills">Skills</a></li>
+                <li><a href="#" data-i18n="projects">Projetos</a></li>
+                <li><a href="#" data-i18n="contact">Contato</a></li>
             </ul>
         </nav>
+
+        <div class="header-utils">
+            <button id="theme-toggle" aria-label="Alternar Tema" data-i18n-aria="theme_aria">🌙</button>
+            
+            <div class="lang-dropdown">
+                <button id="lang-menu-btn" aria-label="Mudar Idioma" data-i18n-aria="lang_aria">
+                    <img id="current-lang-flag" src="assents/tradutor/bandeira-do-brasil.png" width="20" alt="Idioma atual">
+                </button>
+                <ul class="lang-options" id="lang-options">
+                    <li data-lang="en"><img src="assents/tradutor/estados-unidos.png" width="20" alt="USA"> English</li>
+                    <li data-lang="pt" class="active"><img src="assents/tradutor/bandeira-do-brasil.png" width="20" alt="BR"> Portuguese</li>
+                    <li data-lang="es"><img src="assents/tradutor/espanha.png" width="20" alt="ES"> Spanish</li>
+                    <li data-lang="fr"><img src="assents/tradutor/franca.png" width="20" alt="FR"> French</li>
+                </ul>
+            </div>
+            
+            <button class="btn-mobile" id="btn-mobile" aria-label="Menu Mobile" data-i18n-aria="menu_aria">☰</button>
+        </div>
     </header>
+
     <main id="conteudo-main">
         <section class="coteudo-main-section" id="conteudo-main-section">
-            <h1>DevFullStack</h1><span>Olá sou Alexandre Xavier</span>
-            <p>Desenvolvedor Full Stack focado em criar experiências digitais modernas e escaláveis.</p>
-            <a href="#" class="btm-contato">Entrar em Contato</a>
+            <h1 data-i18n="title">DevFullStack</h1>
+            <span data-i18n="greeting">Olá sou Alexandre Xavier</span>
+            <p data-i18n="description">Desenvolvedor Full Stack focado em criar experiências digitais modernas e escaláveis.</p>
+            <a href="#" class="btn-contato" data-i18n="contact_btn">Entrar em Contato</a>
         </section>
+        
         <section class="skills" id="projetos">
-            <h2>Tecnologias</h2>
-                <div class="logos-carousel">
-                    <div class="logos-slide">
-                        <img src="assents/skills/html5.svg" alt="HTML5">
-                        <img src="assents/skills/css.svg" alt="CSS">
-                        <img src="assents/skills/figma.svg" alt="Figma">
-                        <img src="assents/skills/linux.svg" alt="Linux">
-                        <img src="assents/skills/nodejs.svg" alt="Node.js">
-                        <img src="assents/skills/postgresql.svg" alt="PostgreSQL">
-                        <img src="assents/skills/mysql-icon-light.svg" alt="MySQL">
-                        <img src="assents/skills/react.svg" alt="React.js">
-                        <img src="assents/skills/typescript.svg" alt="TypeScript">
-                    </div>
+            <h2 data-i18n="technologies">Tecnologias</h2>
+            <div class="logos-carousel">
+                <div class="logos-slide">
+                    <img src="assents/skills/html5.svg" alt="HTML5">
+                    <img src="assents/skills/css.svg" alt="CSS">
+                    <img src="assents/skills/figma.svg" alt="Figma">
+                    <img src="assents/skills/linux.svg" alt="Linux">
+                    <img src="assents/skills/nodejs.svg" alt="Node.js">
+                    <img src="assents/skills/postgresql.svg" alt="PostgreSQL">
+                    <img src="assents/skills/mysql-icon-light.svg" alt="MySQL">
+                    <img src="assents/skills/react.svg" alt="React.js">
+                    <img src="assents/skills/typescript.svg" alt="TypeScript">
                 </div>
+            </div>
         </section>
-
     </main>
+
     <footer id="rodape-footer">
-         <p>&copy; 2026 Alexandre Xavier - Desenvolvedor Full Stack</p>
+         <p data-i18n="footer_text">&copy; 2026 Alexandre Xavier - Desenvolvedor Full Stack</p>
     </footer>
+
     <script src="js/index.js"></script>
+    <script src="js/tradutor.js"></script>
+    
 </body>
 </html>
