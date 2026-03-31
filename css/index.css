@@ -1,0 +1,89 @@
+@import url(style.css);
+
+/*conteudo*/
+section {
+    padding: 120px 10%;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.coteudo-main-section h1 {
+    font-size: clamp(2rem, 8vw, 3.5rem);
+    margin-bottom: 1rem;
+}
+
+.coteudo-main-section h1 span {
+    background: var(--gradient-linear);
+    -webkit-background-clip: text; 
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.btn-contato {
+    background: var(--gradient-linear);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: transform 0.3s;
+}
+
+.btn-contato:hover {
+    transform: scale(1.05);
+}
+/* 1. O container precisa ser Flex */
+.logos-carousel {
+    overflow: hidden;
+    display: flex;         /* MUDANÇA AQUI: Garante que os filhos fiquem lado a lado perfeitamente */
+    padding: 3rem 0;
+    margin-top: 2rem;
+    position: relative;
+    
+    /* Efeito de degradê nas bordas */
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+
+/* Pausa ao passar o mouse (opcional) */
+.logos-carousel:hover .logos-slide {
+    animation-play-state: paused;
+}
+
+/* 2. As esteiras também são Flex e NÃO podem encolher */
+.logos-slide {
+    display: flex;         /* MUDANÇA AQUI */
+    align-items: center;
+    flex-shrink: 0;        /* MUDANÇA CRÍTICA: Impede que a div encolha e quebre o tamanho de 100% */
+    
+    animation: slide 15s infinite linear;
+}
+
+/* 3. Estilo das Logos */
+.logos-slide img {
+    height: 45px;
+    margin: 0 40px;
+    filter: grayscale(100%) opacity(0.5);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* 4. Hover das Logos */
+.logos-slide img:hover {
+    filter: grayscale(0%) opacity(1);
+    transform: scale(1.15);
+}
+
+/* 5. A Animação Infinita */
+@keyframes slide {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
