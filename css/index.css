@@ -1,4 +1,4 @@
-/*conteudo*/
+/*conteudo genérico*/
 section {
     padding: 120px 10%;
     min-height: 60vh;
@@ -9,54 +9,135 @@ section {
     text-align: center;
 }
 
-.coteudo-main-section h1 {
-    font-size: clamp(2rem, 8vw, 3.5rem);
-    margin-bottom: 1rem;
+/* ==========================================
+   HERO SECTION (Primeira dobra do site)
+   ========================================== */
+#conteudo-main-section {
+    display: flex !important;
+    flex-direction: row !important; /* Força ficar lado a lado no PC */
+    justify-content: space-between;
+    align-items: center;
+    gap: 60px;
+    padding: 160px 10% 80px 10% !important; /* Blinda as bordas para a foto não vazar */
+    width: 100%;
 }
 
-.coteudo-main-section h1 span {
+/* CAIXA DA FOTO (ESQUERDA) */
+.hero-image {
+    width: 45%;
+    display: flex;
+    justify-content: flex-end; /* Encosta a foto mais para o centro */
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 420px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border-color);
+    object-fit: cover;
+}
+
+/* CAIXA DE TEXTO (DIREITA) */
+.hero-text {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinha tudo à esquerda */
+    text-align: left;
+}
+
+.hero-text .saudacao {
+    color: var(--blue-cyan);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+
+/* Degradê consertado no Título Principal */
+#conteudo-main-section h1 {
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    margin-bottom: 1rem;
+    line-height: 1.1;
     background: var(--gradient-linear);
     -webkit-background-clip: text; 
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
+.hero-text p {
+    color: var(--text-secondary);
+    font-size: 1.15rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    max-width: 500px;
+}
+
+/* BOTÃO CONTATO */
 .btn-contato {
     background: var(--gradient-linear);
     color: white;
-    padding: 1rem 2rem;
+    padding: 1rem 2.5rem;
     border-radius: 8px;
     text-decoration: none;
     font-weight: bold;
-    margin-top: 20px;
+    font-size: 1.1rem;
     display: inline-block;
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .btn-contato:hover {
     transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(130, 87, 229, 0.4); /* Efeito brilhante ao passar o mouse */
 }
 
-/* 1. O container precisa ser Flex */
+/* ==========================================
+   RESPONSIVO PARA CELULAR
+   ========================================== */
+@media (max-width: 850px) {
+    #conteudo-main-section {
+        flex-direction: column !important; /* No celular, a foto vai pra cima do texto */
+        text-align: center;
+        padding-top: 140px !important;
+        gap: 40px;
+    }
+
+    .hero-image {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .hero-image img {
+        max-width: 300px; /* Diminui a foto no mobile */
+    }
+
+    .hero-text {
+        width: 100%;
+        align-items: center; /* Centraliza o texto no celular */
+        text-align: center;
+    }
+}
+
+/* ==========================================
+   CARROSSEL DE SKILLS
+   ========================================== */
 .logos-carousel {
     overflow: hidden;
     display: flex;         
     padding: 3rem 0;
     margin-top: 2rem;
     position: relative;
-    width: 100%;
+    width: 70%;
     
-    /* Efeito de degradê nas bordas adaptável ao tema */
     mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
     -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
 }
 
-/* Pausa ao passar o mouse */
 .logos-carousel:hover .logos-slide {
     animation-play-state: paused;
 }
 
-/* 2. As esteiras também são Flex e NÃO podem encolher */
 .logos-slide {
     display: flex;         
     align-items: center;
@@ -64,7 +145,6 @@ section {
     animation: slide 15s infinite linear;
 }
 
-/* 3. Estilo das Logos */
 .logos-slide img {
     height: 45px;
     margin: 0 40px;
@@ -73,18 +153,12 @@ section {
     cursor: pointer;
 }
 
-/* 4. Hover das Logos */
 .logos-slide img:hover {
     filter: grayscale(0%) opacity(1);
     transform: scale(1.15);
 }
 
-/* 5. A Animação Infinita */
 @keyframes slide {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(-100%);
-    }
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
 }
