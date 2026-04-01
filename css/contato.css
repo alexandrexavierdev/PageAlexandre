@@ -1,0 +1,176 @@
+/* ==========================================
+   SEÇÃO DE CONTATO (NOVO DESIGN)
+   ========================================== */
+.contato-container {
+    display: flex;
+    gap: 80px;
+    width: 100%;
+    max-width: 1200px;
+    padding: 60px 0;
+    text-align: left;
+    /* Fundo removido para ficar igual à imagem */
+}
+
+/* Lado esquerdo (Textos) */
+.contato-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.contato-info h2 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: #E6E6E6; /* Cor bem clara, quase branca */
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+.contato-info p {
+    color: var(--text-secondary);
+    font-size: 1.15rem;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    max-width: 450px;
+}
+
+/* Ícones Redes Sociais */
+.redes-sociais {
+    display: flex;
+    gap: 15px;
+}
+
+.redes-sociais a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background-color: #E6E6E6; /* Fundo claro */
+    color: #1A1A1A; /* Ícone escuro */
+    border-radius: 50%;
+    transition: transform 0.3s ease, background-color 0.3s;
+}
+
+.redes-sociais a svg {
+    width: 24px;
+    height: 24px;
+}
+
+.redes-sociais a:hover {
+    transform: translateY(-5px);
+    background-color: var(--purple-main);
+    color: white;
+}
+
+/* Lado direito (Formulário) */
+.contato-form {
+    flex: 1.2; /* O formulário ocupa um pouco mais de espaço */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas colunas iguais */
+    gap: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 8px;
+}
+
+.input-group label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.input-group input, 
+.input-group textarea {
+    width: 100%;
+    padding: 14px 16px;
+    background-color: #1A1A1A; /* Fundo bem escuro dos inputs */
+    border: 1px solid #2A2A2A;
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-family: 'Sora', sans-serif;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.input-group input:focus, 
+.input-group textarea:focus {
+    border-color: var(--purple-main);
+}
+
+.input-group input::placeholder, 
+.input-group textarea::placeholder {
+    color: #555555;
+}
+
+/* Tags de Assunto */
+.assunto-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.assunto-tags .tag {
+    background-color: #1A1A1A;
+    border: 1px solid #2A2A2A;
+    color: var(--text-secondary);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.assunto-tags .tag:hover {
+    border-color: var(--text-secondary);
+}
+
+.assunto-tags .tag.active {
+    background-color: var(--text-primary);
+    color: var(--bg-dark);
+    border-color: var(--text-primary);
+}
+
+/* Botão Enviar Roxo */
+.btn-enviar-roxo {
+    background-color: #5A54D6; /* Roxo puxado pro azul igual da foto */
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 24px; /* Bem arredondado */
+    font-weight: 600;
+    font-size: 1rem;
+    font-family: 'Sora', sans-serif;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-enviar-roxo:hover {
+    background-color: #4A44B6;
+    transform: scale(1.02);
+}
+
+/* Responsivo para o Formulário */
+@media (max-width: 850px) {
+    .contato-container {
+        flex-direction: column;
+        gap: 50px;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr; /* Volta para 1 coluna no celular */
+    }
+}

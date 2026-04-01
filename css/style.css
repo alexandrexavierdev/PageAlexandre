@@ -1,6 +1,7 @@
 /*imports css*/
 @import url('index.css');
 @import url('reset.css');
+@import url('contato.css');
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap');
 /*imports css final*/
 
@@ -23,7 +24,6 @@
   /* Gradiente */
   --gradient-linear: linear-gradient(90deg, #8257E5 0%, #22D3EE 100%);
 }
-
 /* Tema Claro */
 [data-theme="light"] {
   --bg-dark: #F0F0F5;       
@@ -35,8 +35,6 @@
   --text-secondary: #737380; 
 }
 /*cores final*/
-
-
 body {
     background-color: var(--bg-dark);
     color: var(--text-primary);

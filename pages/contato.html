@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entre em Contato | Alexandre Xavier</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header id="header">
+        <div class="logo">
+            <img src="../assents/Logo.svg" alt="DevFullStack">
+            <h2>Alexandre Xavier</h2>
+            <span data-i18n="subtitle">Criando Experiências Digitais</span>
+        </div>
+        
+        <nav class="menu-top-nav" id="nav">
+            <ul class="menu-top-ul">
+                <li><a href="../index.html" data-i18n="home">Home</a></li>
+                <li><a href="#" data-i18n="about">Sobre</a></li>
+                <li><a href="index.html#projetos" data-i18n="skills">Skills</a></li>
+                <li><a href="#" data-i18n="projects">Projetos</a></li>
+                <li><a href="contato.html" data-i18n="contact">Contato</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-utils">
+            <button id="theme-toggle" aria-label="Alternar Tema" data-i18n-aria="theme_aria">🌙</button>
+            
+            <div class="lang-dropdown">
+                <button id="lang-menu-btn" aria-label="Mudar Idioma" data-i18n-aria="lang_aria">
+                    <img id="current-lang-flag" src="../assents/tradutor/bandeira-do-brasil.png" width="20" alt="Idioma atual">
+                </button>
+                <ul class="lang-options" id="lang-options">
+                    <li data-lang="en"><img src="../assents/tradutor/estados-unidos.png" width="20" alt="USA"> English</li>
+                    <li data-lang="pt" class="active"><img src="../assents/tradutor/bandeira-do-brasil.png" width="20" alt="BR"> Portuguese</li>
+                    <li data-lang="es"><img src="../assents/tradutor/espanha.png" width="20" alt="ES"> Spanish</li>
+                    <li data-lang="fr"><img src="../assents/tradutor/franca.png" width="20" alt="FR"> French</li>
+                </ul>
+            </div>
+            
+            <button class="btn-mobile" id="btn-mobile" aria-label="Menu Mobile" data-i18n-aria="menu_aria">☰</button>
+        </div>
+    </header>
+
+    <main id="conteudo-main">
+        <section class="contato" id="contato" style="margin-top: 130px;">
+            <div class="contato-container">
+                
+                <div class="contato-info">
+                    <h2 data-i18n="contact_title">VAMOS<br>TRABALHAR<br>JUNTOS</h2>
+                    <p data-i18n="contact_subtitle">Você está procurando um parceiro digital para ajudar com sua estratégia digital, UX, criação de sites ou aplicações? Estou aqui para ajudar!</p>
+                    
+                    <div class="redes-sociais">
+                        
+                    </div>
+                </div>
+
+                <form class="contato-form">
+                    
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="nome" data-i18n="form_name">Primeiro Nome</label>
+                            <input type="text" id="nome" placeholder="Nome" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="sobrenome" data-i18n="form_lastname">Sobrenome</label>
+                            <input type="text" id="sobrenome" placeholder="Sobrenome" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="email" data-i18n="form_email">E-mail</label>
+                            <input type="email" id="email" placeholder="E-mail" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="telefone" data-i18n="form_phone">Telefone</label>
+                            <input type="tel" id="telefone" placeholder="Telefone" required>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label data-i18n="form_subject">Assunto</label>
+                        <div class="assunto-tags">
+                            <button type="button" class="tag active">Site</button>
+                            <button type="button" class="tag">Aplicativo</button>
+                            <button type="button" class="tag">Plataforma Web</button>
+                            <button type="button" class="tag">Design</button>
+                            <button type="button" class="tag">Backend</button>
+                            <button type="button" class="tag">Outro</button>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="mensagem" data-i18n="form_message">Mensagem</label>
+                        <textarea id="mensagem" rows="4" placeholder="Mensagem" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn-enviar-roxo" data-i18n="form_send">Enviar</button>
+                </form>
+
+            </div>
+        </section>
+    </main>
+
+    <footer id="rodape-footer">
+         <p data-i18n="footer_text">&copy; 2026 Alexandre Xavier - Desenvolvedor Full Stack</p>
+    </footer>
+
+    <script src="../js/index.js"></script>
+    <script src="../js/tradutor.js"></script>
+    <script src="../js/contato.js"></script>
+
+</body>
+</html>
